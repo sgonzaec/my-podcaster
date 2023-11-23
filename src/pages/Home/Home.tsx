@@ -1,43 +1,26 @@
-import { useEffect, useState } from "react";
-import { itunesClient } from "../../clients";
-import { PodcastList } from "../../typings/PodcastList";
+// Home.tsx
+import React from "react";
+import { Entry } from "../../typings/PodcastList";
+import Card from "../../components/Card/Card";
+import "./Home.scss";
+import { usePodcastData } from "../../Helpers/usePodcast";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
-const Home = () => {
-  const [loading, setLoading] = useState(false);
-  const [podcast, setPodcast] = useState<PodcastList>();
-
-  useEffect(() => {
-    if (podcast !== undefined) return;
-    setLoading(true);
-
-    itunesClient.getAllPodcast().then((result) => {
-      setPodcast(result);
-      setLoading(false);
-    });
-  }, []);
+const Home: React.FC = () => {
+  const { loading, podcast } = usePodcastData();
 
   return (
     <section>
       {loading ? (
-        <></>
+        <LoadingSpinner />
       ) : (
-        <ul>
-          {podcast &&
-            podcast.feed.entry.map((element, index) => {
-              return (
-                <a href="#">
-                  <li key={index}>
-                    <img
-                      src={element["im:image"][0].label}
-                      alt={`${element.id.attributes["im:id"]}-image`}
-                    />
-                    <p>{element["im:name"].label}</p>
-                    <p>{element["im:artist"].label}</p>
-                  </li>
-                </a>
-              );
-            })}
-        </ul>
+        podcast && (
+          <div className="card-container">
+            {podcast.feed.entry.map((element: Entry) => (
+              <Card key={element.id.attributes["im:id"]} element={element} />
+            ))}
+          </div>
+        )
       )}
     </section>
   );
