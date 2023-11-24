@@ -9,7 +9,7 @@ export type ResultDetail = {
     wrapperType: string
     kind: string
     artistId: number
-    collectionId: number
+    collectionId: number | undefined
     trackId: number
     artistName: string
     collectionName: string

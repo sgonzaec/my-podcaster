@@ -1,7 +1,8 @@
-import { ResultDetail } from "../../typings/DetailList"
-import "./OwnerInfo.scss"
+import ownerFunctios from "../../Functions/ownerFunctions";
+import { ResultDetail } from "../../typings/DetailList";
+import "./OwnerInfo.scss";
 
-const OwnerInfo = ({author}: {author: ResultDetail}) => {
+const OwnerInfo = ({ author }: { author: ResultDetail }) => {
   return (
     <div className="owner_container">
       <img src={author?.artworkUrl600} alt={`${author?.collectionId}`} />
@@ -10,10 +11,15 @@ const OwnerInfo = ({author}: {author: ResultDetail}) => {
         <p>By: {author?.artistName}</p>
       </div>
       <div className="owner_container_block">
-        <p><strong>Descipción:</strong> </p>
+        {author && author?.collectionId && (
+          <p className="owner_container_block_description">
+            <strong>Descipción:{" "}</strong>
+            {ownerFunctios.getDescription(author?.collectionId)}
+          </p>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default OwnerInfo
+export default OwnerInfo;
