@@ -1,0 +1,21 @@
+.podcast_episodies {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.5em;
+  margin: 1em;
+  &_list {
+    display: grid;
+    gap: 1em;
+    &_count {
+      padding: 1em;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      font-size: 20px;
+      font-weight: bold;
+      max-height: 25px;
+    }
+    div {
+        padding: 1em;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+  }
+}
