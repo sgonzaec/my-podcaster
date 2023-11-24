@@ -1,4 +1,3 @@
-// usePodcastData.ts
 import { useEffect, useState } from "react";
 import { PodcastList } from "../typings/PodcastList";
 import { itunesClient } from "../clients";
