@@ -1,15 +1,16 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
+import List from "./pages/List/List";
 
 function App() {
   return (
     <>
-      <Header />
       <Router>
+        <Header />
         <Switch>
           <Route path="/" exact component={Home} />
-          {/* <Route path="/episodes/:id" component={<></>} /> */}
+          <Route path="/podcast/:id" component={List} />
         </Switch>
       </Router>
     </>
