@@ -1,4 +1,4 @@
-import generalFunctios from "../../Helpers/generalFunctions";
+import generalFunctios from "../../Functions/generalFunctions";
 import { ResultDetails } from "../../typings/DetailList";
 import "./Table.scss"
 
@@ -26,8 +26,8 @@ const Table = ({
             return (
               <tr>
                 <td key={index}>{generalFunctios.formatName(episodie.trackName)}</td>
-                <td key={index}>{generalFunctios.formatDate(new Date(episodie.releaseDate))}</td>
-                <td key={index}>{generalFunctios.formatTime(episodie.trackTimeMillis)}</td>
+                <td key={index} className="secundary">{generalFunctios.formatDate(new Date(episodie.releaseDate))}</td>
+                <td key={index} className="secundary">{generalFunctios.formatTime(episodie.trackTimeMillis)}</td>
               </tr>
             );
           })}
