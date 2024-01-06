@@ -1,6 +1,7 @@
+import { Link, useLocation } from "react-router-dom";
 import generalFunctios from "../../Functions/generalFunctions";
 import { ResultDetails } from "../../typings/DetailList";
-import "./Table.scss"
+import "./Table.scss";
 
 const Table = ({
   colums,
@@ -9,6 +10,8 @@ const Table = ({
   colums: string[];
   episodies: ResultDetails;
 }) => {
+
+  const location = useLocation()
 
   return (
     <table>
@@ -24,10 +27,18 @@ const Table = ({
         {episodies &&
           episodies.map((episodie: any, index: number) => {
             return (
-              <tr>
-                <td key={index}>{generalFunctios.formatName(episodie.trackName)}</td>
-                <td key={index} className="secundary">{generalFunctios.formatDate(new Date(episodie.releaseDate))}</td>
-                <td key={index} className="secundary">{generalFunctios.formatTime(episodie.trackTimeMillis)}</td>
+              <tr key={index} >
+                <Link to={`${location.pathname}/episode/${episodie.trackId}`}>
+                  <td className="primary">
+                    {generalFunctios.formatName(episodie.trackName)}
+                  </td>
+                </Link>
+                <td className="secundary">
+                  {generalFunctios.formatDate(new Date(episodie.releaseDate))}
+                </td>
+                <td className="secundary">
+                  {generalFunctios.formatTime(episodie.trackTimeMillis)}
+                </td>
               </tr>
             );
           })}

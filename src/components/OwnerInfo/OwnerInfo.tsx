@@ -14,7 +14,7 @@ const OwnerInfo = ({ author }: { author: ResultDetail }) => {
         {author && author?.collectionId && (
           <p className="owner_container_block_description">
             <strong>Descipción:{" "}</strong>
-            {ownerFunctios.getDescription(author?.collectionId)}
+            {ownerFunctios.getDescription(author?.collectionId).summary.label}
           </p>
         )}
       </div>
