@@ -1,4 +1,3 @@
-import { useDetailsEpisodie } from "../../Helpers/useDetailEpisodie";
 import { useDetailsData } from "../../Helpers/useDetails";
 import EpisodieDetail from "../../components/EpisodieDetail/EpisodieDetail";
 import OwnerInfo from "../../components/OwnerInfo/OwnerInfo";
@@ -6,7 +5,6 @@ import "./Detail.scss";
 
 const List: React.FC = () => {
   const { detail } = useDetailsData();
-  const {loading, episodie} = useDetailsEpisodie();
 
   return (
     <section className="podcast_episodies">
