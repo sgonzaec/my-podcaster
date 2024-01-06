@@ -14,7 +14,7 @@ const ownerFunctios = {
         (entry: Entry) => entry?.id?.attributes?.["im:id"] === collectionId.toString()
       );
       
-      return podcastEncontrado.summary.label;
+      return podcastEncontrado;
     }
     return undefined;
   },

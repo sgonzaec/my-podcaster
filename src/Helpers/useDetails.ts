@@ -20,7 +20,6 @@ export const useDetailsData = (): UseDetailsDataResult => {
     try {
       itunesClient.getPodcastList(routeId).then((result) => {
         setDetail(result);
-
         setLoading(false);
       });
     } catch (error) {
